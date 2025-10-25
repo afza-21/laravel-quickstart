@@ -5,6 +5,10 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+@source '../../vendor/wire-elements/modal/resources/views/*.blade.php';
+@source '../../vendor/wire-elements/modal/src/ModalComponent.php';
+@source '../../vendor/wireui/wireui';
+
 
 @custom-variant dark (&:where(.dark, .dark *));
 

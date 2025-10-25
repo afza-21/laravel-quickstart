@@ -10,7 +10,8 @@ class Table extends Component
        public $sortBy = 'id';
     public $sortDir = 'DESC';
     public function add(){
-        $this->dispatch('openModal', 'user.add-user-modal');
+        // dd('opem');
+        $this->dispatch('openModal', 'user.add');
     }
       public function setSortby($sortByField)
     {
@@ -22,6 +23,7 @@ class Table extends Component
     public function render()
     {
         $items = User::paginate(10);
+        
         return view('livewire.user.table', ['items' => $items]);
     }
 }
