@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\User\Table as UserTable;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,5 +19,6 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
+Route::get('user', UserTable::class)->name('user');
 
 require __DIR__.'/auth.php';
