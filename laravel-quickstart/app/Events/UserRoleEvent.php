@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -20,7 +21,10 @@ class UserRoleEvent
      */
     public function __construct(User $user)
     {
-        $user->addRole($user->role);
+        $role = Role::find($user->role); // get role model using ID
+        if ($role) {
+            $user->addRole($role->name); // pass name instead of number
+        }
     }
 
     /**

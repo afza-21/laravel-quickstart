@@ -5,12 +5,13 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Str;
 use App\Events\UserRoleEvent;
+use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\HasRolesAndPermissions;
-
-class User extends Authenticatable
+use Laratrust\Contracts\LaratrustUser;
+class User extends Authenticatable implements LaratrustUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable,HasRolesAndPermissions;

@@ -9,7 +9,7 @@ class Table extends Component
 {
        public $sortBy = 'id';
     public $sortDir = 'DESC';
-    public function add(){
+    public function add(){                                                                                      
         // dd('opem');
         $this->dispatch('openModal', 'user.add');
     }

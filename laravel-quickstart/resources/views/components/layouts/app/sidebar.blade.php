@@ -18,12 +18,14 @@
                 <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
                     wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
             </flux:navlist.group>
+            @permission('users-view')
             <flux:navlist.group user class="grid">
                 <flux:navlist.item icon="home" :href="route('user')" :current="request()->routeIs('user')"
                     wire:navigate>{{ __('Users') }}</flux:navlist.item>
             </flux:navlist.group>
+            @endpermission
         </flux:navlist>
-
+        
         <flux:spacer />
 
         <flux:navlist variant="outline">
@@ -132,8 +134,27 @@
 
     @fluxScripts
     @livewireScripts
-
     @livewire('wire-elements-modal')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        window.addEventListener('alert', event => {
+            Toast.fire({
+                icon: event.detail[0].type,
+                title: event.detail[0].message
+            });
+        });
+    </script>
 </body>
 
 </html>
